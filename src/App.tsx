@@ -1,9 +1,24 @@
+import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
+import Home from "./pages/Home";
+import Parks from "./pages/Parks";
+import Layout from "./components/Layout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "parks", element: <Parks /> },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <h1 className="text-red-400">Vite + React</h1>
+      <RouterProvider router={router} />
     </>
   );
 }
