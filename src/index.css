@@ -1,1 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700;900&family=Noto+Serif:wght@300;400;500;700;900&family=Noto+Serif+Display:wght@300;400;500;700;900&display=swap");
 @import "tailwindcss";
+
+/* Fonts and base variables */
+:root {
+  --font-noto-serif: "Noto Serif", serif;
+  --font-noto-sans: "Noto Sans", sans-serif;
+  --font-noto-display: "Noto Serif Display", serif;
+
+  /* Light mode colors */
+  --color-bg: #f5f3ed;
+  --color-bg-secondary: #ffffff;
+  --color-text: #313a44;
+  --color-button-primary: #313a44;
+}
+
+.dark {
+  /* Dark mode colors */
+  --color-bg: #313a44;
+  --color-text: #f5f3ed;
+  --color-button-primary: #f5f3ed;
+}
+
+/* Base styling */
+body {
+  font-family: var(--font-noto-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.font-serif {
+  font-family: var(--font-noto-serif);
+}
+
+.bg-color-button-primary {
+  background-color: var(--color-button-primary);
+}
+
+.bg-color-bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
