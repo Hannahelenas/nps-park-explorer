@@ -11,8 +11,11 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto py-5 px-5 grid grid-cols-2 lg:grid-cols-3 items-center">
+    <nav
+      className="w-full absolute top-0 bg-[var(--color-bg)] z-20"
+      aria-label="Main navigation"
+    >
+      <div className="max-w-7xl mx-auto py-5 md:py-3 grid grid-cols-2 lg:grid-cols-3 items-center px-5">
         {/* Logo text */}
         <Link
           to="/"
@@ -41,10 +44,12 @@ export default function Navbar() {
         <div className="flex justify-end items-center gap-4 col-start-3">
           <button
             type="button"
-            className="hidden lg:inline text-white bg-color-button-primary px-4 py-2 rounded-3xl 
-            hover:bg-green-800 focus:outline-teal-600"
+            className="hidden lg:inline bg-[var(--color-primary)] border-2 
+            border-[var(--color-primary)]  px-5 py-2 rounded-full transition-all 
+        duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent hover:text-black 
+        hover:border-[var(--color-primary)] focus:outline-teal-600"
           >
-            Future Button
+            Log in
           </button>
 
           {/* Mobile menu button */}
