@@ -9,7 +9,6 @@
 
   /* Light mode colors */
   --color-bg: #f5f3ed;
-  --color-bg-secondary: #ffffff;
   --color-text: #313a44;
   --color-button-primary: #313a44;
 }
@@ -34,8 +33,4 @@ body {
 
 .bg-color-button-primary {
   background-color: var(--color-button-primary);
-}
-
-.bg-color-bg-secondary {
-  background-color: var(--color-bg-secondary);
 }
