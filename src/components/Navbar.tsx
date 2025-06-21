@@ -23,7 +23,6 @@ export default function Navbar() {
         >
           Park Explorer
         </Link>
-
         {/* Desktop links */}
         <ul className="hidden lg:flex justify-center gap-8">
           {links.map((link) => (
@@ -39,7 +38,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
         {/* Button container */}
         <div className="flex justify-end items-center gap-4 col-start-3">
           <button
@@ -51,7 +49,6 @@ export default function Navbar() {
           >
             Log in
           </button>
-
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
