@@ -1,5 +1,11 @@
+import ParkList from "../components/ParkList";
+
 const Parks = () => {
-  return <div>Parks</div>;
+  return (
+    <>
+      <ParkList />
+    </>
+  );
 };
 
 export default Parks;
