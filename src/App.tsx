@@ -3,6 +3,8 @@ import "./App.css";
 import Home from "./pages/Home";
 import Parks from "./pages/Parks";
 import Layout from "./components/Layout";
+import { ParkProvider } from "./context/park/ParkProvider";
+import ParkOverview from "./pages/ParkOverview";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "parks", element: <Parks /> },
+      { path: "parks/:parkCode", element: <ParkOverview /> },
     ],
   },
 ]);
@@ -18,7 +21,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ParkProvider>
+        <RouterProvider router={router} />
+      </ParkProvider>
     </>
   );
 }
