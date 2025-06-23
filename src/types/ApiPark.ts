@@ -1,6 +1,7 @@
 import type {
   Activity,
   Address,
+  ContactInfo,
   OperatingHours,
   ParkImage,
   Topic,
@@ -21,4 +22,5 @@ export interface ApiPark {
   designation: string;
   addresses: Address[];
   operatingHours: OperatingHours[];
+  contacts: ContactInfo;
 }

@@ -13,6 +13,7 @@ export interface Park {
   designation: string;
   addresses: Address[];
   operatingHours: OperatingHours[];
+  contacts: ContactInfo;
 }
 
 export interface Activity {
@@ -37,9 +38,11 @@ export interface Address {
   postalCode: string;
   city: string;
   stateCode: string;
+  countryCode: string;
   line1: string;
   line2?: string;
   line3?: string;
+  type: "Physical" | "Mailing";
 }
 
 export interface OperatingHours {
@@ -48,7 +51,7 @@ export interface OperatingHours {
   name: string;
 }
 
-type Weekday =
+export type Weekday =
   | "monday"
   | "tuesday"
   | "wednesday"
@@ -56,3 +59,27 @@ type Weekday =
   | "friday"
   | "saturday"
   | "sunday";
+
+export const weekdayOrder: Weekday[] = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
+
+export interface ContactInfo {
+  phoneNumbers: PhoneNumber[];
+  emailAddresses: EmailAddress[];
+}
+
+export interface PhoneNumber {
+  phoneNumber: string;
+  type: "Voice" | "Fax" | "TTY";
+}
+
+export interface EmailAddress {
+  emailAddress: string;
+}
