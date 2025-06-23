@@ -1,5 +1,5 @@
 import type { ApiPark } from "../types/ApiPark";
-import type { Activity, Park, ParkImage, Topic } from "../types/Park";
+import type { Activity, Address, Park, ParkImage, Topic } from "../types/Park";
 
 const apiKey = import.meta.env.VITE_NPS_API_KEY;
 const apiUrl = import.meta.env.VITE_NPS_PARKS_BASE_URL;
@@ -9,8 +9,6 @@ export async function fetchParks(): Promise<Park[]> {
   const url = new URL(apiUrl);
   url.searchParams.set("limit", "40");
   url.searchParams.set("api_key", apiKey);
-
-  console.log("Fetching parks from:", url.toString());
 
   const response = await fetch(url.toString());
   if (!response.ok) {
@@ -34,6 +32,14 @@ export async function fetchParks(): Promise<Park[]> {
     weatherInfo: item.weatherInfo,
     name: item.name,
     designation: item.designation,
+    addresses: Array.isArray(item.addresses)
+      ? (item.addresses as Address[])
+      : [],
+    operatingHours: item.operatingHours ?? [],
+    contacts:
+      typeof item.contacts === "object"
+        ? item.contacts
+        : { phoneNumbers: [], emailAddresses: [] },
   }));
 
   return parks;
@@ -70,8 +76,14 @@ export async function fetchPark(parkCode: string): Promise<Park> {
     weatherInfo: item.weatherInfo,
     name: item.name,
     designation: item.designation,
-    addresses: item.addresses ?? [],
+    addresses: Array.isArray(item.addresses)
+      ? (item.addresses as Address[])
+      : [],
     operatingHours: item.operatingHours ?? [],
+    contacts:
+      typeof item.contacts === "object"
+        ? item.contacts
+        : { phoneNumbers: [], emailAddresses: [] },
   };
 
   return park;
