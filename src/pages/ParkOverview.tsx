@@ -25,7 +25,6 @@ const ParkOverview = () => {
       <p>{park.weatherInfo}</p>
       <p>{park.directionsInfo}</p>
       {/* Opening details */}
-
       {park.operatingHours.map((hour) => (
         <div key={hour.name} className="mt-4">
           <p className="italic">{hour.description}</p>
@@ -40,7 +39,6 @@ const ParkOverview = () => {
           </ul>
         </div>
       ))}
-
       <h2 className="mt-4 font-semibold">Activities</h2>
       <ul className="list-disc list-inside">
         {park.activities.map((act) => (
@@ -57,10 +55,28 @@ const ParkOverview = () => {
       {/* Addresses */}
       <ul>
         {park.addresses.map((address) => (
-          <li key={address.line1}>
-            {address.line1} {address.line2} {address.line3} {address.postalCode}{" "}
-            {address.city}, {address.stateCode},{address.countryCode},{" "}
-            {address.type},
+          <li key={address.type}>
+            <address>
+              <em>{address.type} address:</em> <br />
+              {address.line1}
+              <br />
+              {address.line2 && (
+                <>
+                  {address.line2}
+                  <br />
+                </>
+              )}
+              {address.line3 && (
+                <>
+                  {address.line3}
+                  <br />
+                </>
+              )}
+              {address.postalCode} {address.city}
+              <br />
+              {address.stateCode}, {address.countryCode}
+              <br />
+            </address>
           </li>
         ))}
       </ul>
