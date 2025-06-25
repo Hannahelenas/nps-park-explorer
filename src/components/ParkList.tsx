@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { useParkContext } from "../hooks/useParkContext";
+import ParkCard from "./cards/ParkCard";
 
 const ParkList = () => {
   const { parks, loading, error } = useParkContext();
@@ -7,30 +7,17 @@ const ParkList = () => {
   if (loading) return <div>Loading parks...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  parks.forEach((park) => {
-    console.log(`${park.fullName} has ${park.activities.length} activities`);
-  });
-
   return (
-    <>
-      <ul className="mt-20">
-        {parks.map((park) => (
-          <li key={park.id}>
-            <Link
-              to={`/parks/${park.parkCode}`}
-              aria-label={`Go to the page for ${park.name}`}
-            >
-              <h1 className="font-bold">{park.fullName}</h1>
-              {park.activities.length > 0 && (
-                <p>
-                  {park.fullName} has {park.activities.length} activities
-                </p>
-              )}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul
+      className="grid grid-cols-1 sm:grid-cols-2 gap-1 lg:gap-6 sm:gap-1 
+          max-w-6xl mx-auto"
+    >
+      {parks.map((park) => (
+        <li key={park.id}>
+          <ParkCard park={park} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
