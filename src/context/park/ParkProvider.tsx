@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useCallback, type ReactNode } from "react";
 import { ParkContext } from "./ParkContext";
 import { fetchPark, fetchParks } from "../../api/parks";
 import type { Park } from "../../types/Park";
@@ -22,7 +22,7 @@ export const ParkProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const getParkByCode = async (parkCode: string): Promise<Park | null> => {
+  /* const getParkByCode = async (parkCode: string): Promise<Park | null> => {
     try {
       const data = await fetchPark(parkCode);
       return data;
@@ -30,7 +30,20 @@ export const ParkProvider = ({ children }: { children: ReactNode }) => {
       console.error(err);
       return null;
     }
-  };
+  }; */
+
+  const getParkByCode = useCallback(
+    async (parkCode: string): Promise<Park | null> => {
+      try {
+        const data = await fetchPark(parkCode);
+        return data;
+      } catch (err) {
+        console.error(err);
+        return null;
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     loadParks();
