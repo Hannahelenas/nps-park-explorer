@@ -1,120 +1,62 @@
 import { useParams } from "react-router-dom";
 import { useParkData } from "../hooks/useParkData";
-import { weekdayOrder } from "../types/Park";
+import ParkOverviewHero from "../components/ParkOverviewHero";
+import OpeningHoursSection from "../components/OpeningHoursSection";
+import ParkIntroSection from "../components/ParkIntroSection";
 
 const ParkOverview = () => {
   const { parkCode } = useParams<{ parkCode: string }>();
   const { park, loading, error } = useParkData(parkCode);
 
-  if (loading) return <div>Loading park...</div>;
+  if (loading) {
+    return (
+      <div
+        className="h-[40dvh] md:h-[50dvh] lg:h-[50dvh] xl:h-[80dvh] flex 
+      justify-center items-center"
+      >
+        <p className="text-lg font-semibold flex items-center gap-2">
+          <span
+            className="animate-spin w-4 h-4 border-2 border-t-transparent
+           border-black rounded-full"
+          ></span>
+          Loading park...
+        </p>
+      </div>
+    );
+  }
   if (error) return <div>Error: {error}</div>;
   if (!park) return <div>No park found.</div>;
 
   return (
-    <section className="mt-20">
-      {/* Hero image */}
-      <img
-        src={park.images[0]?.url}
-        alt={park.images[0]?.altText}
-        className="w-full h-[40dvh] md:h-[60dvh] xl:h-[90dvh] object-cover"
-      />
-      <h1 className="text-2xl font-bold">{park.fullName}</h1>
-      <p>{park.designation}</p>
-      <p>{park.states}</p>
-      <p className="mt-2">{park.description}</p>
-      <p>{park.weatherInfo}</p>
-      <p>{park.directionsInfo}</p>
-      {/* Opening details */}
-      {park.operatingHours.map((hour) => (
-        <div key={hour.name} className="mt-4">
-          <p className="italic">{hour.description}</p>
-          <p className="font-bold">{hour.name}</p>
-          <ul className="mt-2">
-            {weekdayOrder.map((day) => (
-              <li key={day}>
-                <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong>{" "}
-                {hour.standardHours[day]}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      <h2 className="mt-4 font-semibold">Activities</h2>
-      <ul className="list-disc list-inside">
-        {park.activities.map((act) => (
-          <li key={act.id}>{act.name}</li>
-        ))}
-      </ul>
-      <h2 className="mt-4 font-semibold">Topics</h2>
-      <ul className="list-disc list-inside">
-        {park.topics.map((topic) => (
-          <li key={topic.id}>{topic.name}</li>
-        ))}
-      </ul>
-      <h2 className="mt-4 font-semibold">Contact Details</h2>
-      {/* Addresses */}
-      <ul>
-        {park.addresses.map((address) => (
-          <li key={address.type}>
-            <address>
-              <em>{address.type} address:</em> <br />
-              {address.line1}
-              <br />
-              {address.line2 && (
-                <>
-                  {address.line2}
-                  <br />
-                </>
-              )}
-              {address.line3 && (
-                <>
-                  {address.line3}
-                  <br />
-                </>
-              )}
-              {address.postalCode} {address.city}
-              <br />
-              {address.stateCode}, {address.countryCode}
-              <br />
-            </address>
-          </li>
-        ))}
-      </ul>
-      <p>Email & Phone</p>
-      {/* Phone numbers */}
-      {park.contacts.phoneNumbers.length > 0 && (
-        <ul className="list-disc list-inside">
-          {park.contacts.phoneNumbers.map((phone, index) => (
-            <li key={index}>
-              {phone.type}:{" "}
-              <a href={`tel:${phone.phoneNumber}`} className=" underline">
-                {phone.phoneNumber}
-              </a>
-            </li>
-          ))}
+    /* Hero section */
+    <section className="mt-0 relative">
+      {park && <ParkOverviewHero park={park} />}
+      <section
+        className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-5 flex 
+      flex-col lg:flex-row justify-between"
+      >
+        <ul
+          className="flex flex-row flex-wrap font-serif font-medium 
+        items-start gap-4 md:gap-8 py-2 md:py-5 "
+        >
+          <li className="">Activities</li>
+          <li className="">Campsites</li>
+          <li className="">Opening hours</li>{" "}
+          <li className="">Visitor centers</li>
         </ul>
-      )}
-      {/* Email addresses */}
-      {park.contacts.emailAddresses.length > 0 && (
-        <ul className="list-disc list-inside mt-2">
-          {park.contacts.emailAddresses.map((email, index) => (
-            <li key={index}>
-              <a href={`mailto:${email.emailAddress}`} className=" underline">
-                {email.emailAddress}
-              </a>
-            </li>
-          ))}
+        <ul
+          className="flex flex-row flex-wrap font-serif font-medium 
+        items-start gap-4 md:gap-8 py-2 md:py-5"
+        >
+          <li className="">Alerts</li>
+          <li>Contact</li>
+          <li>Fees</li>
         </ul>
-      )}
-      {park.images.length > 0 && (
-        <ul>
-          {park.images.map((image) => (
-            <li key={image.title}>
-              <img src={image.url} alt={image.altText} />
-            </li>
-          ))}
-        </ul>
-      )}
+      </section>
+      {/* Park intro section */}
+      {park && <ParkIntroSection park={park} />}
+      {/* Opening hours section */}
+      {park && <OpeningHoursSection park={park} />}
     </section>
   );
 };

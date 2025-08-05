@@ -11,6 +11,7 @@ const ParkOverviewHero = ({ park }: ParkOverviewHeroProps) => {
         <img
           src={park.images[0]?.url}
           alt={park.images[0]?.altText}
+          loading="lazy"
           className="w-full h-[40dvh] md:h-[50dvh] lg:h-[50dvh] xl:h-[80dvh] 
           object-cover"
         />
@@ -21,7 +22,7 @@ const ParkOverviewHero = ({ park }: ParkOverviewHeroProps) => {
       </div>
 
       <section
-        className=" bg-black py-2 md:py-4 lg:py-6"
+        className=" bg-black py-2 md:py-4 lg:py-5"
         aria-labelledby="park-heading"
       >
         <div

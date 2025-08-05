@@ -65,6 +65,7 @@ export async function fetchPark(parkCode: string): Promise<Park> {
 
   const park: Park = {
     id: item.id,
+    url: item.url,
     fullName: item.fullName,
     parkCode: item.parkCode,
     description: item.description,

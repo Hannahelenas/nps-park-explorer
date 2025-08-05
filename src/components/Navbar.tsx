@@ -15,11 +15,11 @@ export default function Navbar() {
       className="w-full absolute top-0 bg-[var(--color-bg)] z-20"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto py-5 md:py-3 grid grid-cols-2 lg:grid-cols-3 items-center px-5">
+      <div className="max-w-6xl mx-auto py-5 md:py-3 grid grid-cols-2 lg:grid-cols-3 items-center px-5 sm:px-10 xl:px-5">
         {/* Logo text */}
         <Link
           to="/"
-          className="text-2xl md:text-4xl tracking-tighter font-light font-serif xl:py-2"
+          className="text-2xl md:text-3xl tracking-tighter font-light font-serif xl:py-2"
         >
           Park Explorer
         </Link>
