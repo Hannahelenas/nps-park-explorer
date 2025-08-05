@@ -9,6 +9,7 @@ import type {
 
 export interface ApiPark {
   id: string;
+  url: string;
   fullName: string;
   parkCode: string;
   description: string;

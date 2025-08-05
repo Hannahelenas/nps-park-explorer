@@ -1,5 +1,6 @@
 export interface Park {
   id: string;
+  url: string;
   fullName: string;
   parkCode: string;
   description: string;
