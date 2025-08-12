@@ -8,7 +8,7 @@ interface OpeningHoursSectionProps {
 const OpeningHoursSection = ({ park }: OpeningHoursSectionProps) => {
   return (
     <section
-      className="max-w-6xl px-5 mx-auto mt-5"
+      className="max-w-6xl px-5 mx-auto mt-5 mb-6"
       aria-labelledby="opening-hours-heading"
     >
       {" "}
