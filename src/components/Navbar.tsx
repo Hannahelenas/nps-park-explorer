@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../animations.css";
+import { IoMdClose, IoMdMenu } from "react-icons/io";
 
 const links = [
   { name: "Home", to: "/" },
@@ -15,11 +16,15 @@ export default function Navbar() {
       className="w-full absolute top-0 bg-[var(--color-bg)] z-20"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto py-5 md:py-3 grid grid-cols-2 lg:grid-cols-3 items-center px-5 sm:px-10 xl:px-5">
+      <div
+        className="max-w-6xl mx-auto py-5 md:py-3 grid grid-cols-2 
+        lg:grid-cols-3 items-center px-5 sm:px-10 xl:px-5"
+      >
         {/* Logo text */}
         <Link
           to="/"
-          className="text-2xl md:text-3xl tracking-tighter font-light font-serif xl:py-2"
+          className="text-2xl md:text-3xl tracking-tighter font-light font-serif
+          xl:py-2"
         >
           Park Explorer
         </Link>
@@ -44,18 +49,26 @@ export default function Navbar() {
             type="button"
             className="hidden lg:inline bg-[var(--color-primary)] border-2 
             border-[var(--color-primary)]  px-5 py-2 rounded-full transition-all 
-        duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent hover:text-black 
-        hover:border-[var(--color-primary)] focus:outline-teal-600"
+            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
+           hover:text-black hover:border-[var(--color-primary)]
+          focus:outline-teal-600"
           >
             Log in
           </button>
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden  text-xl"
-            aria-label="Open menu"
+            className="lg:hidden text-2xl p-3"
+            aria-label={
+              menuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={menuOpen}
           >
-            Menu
+            {menuOpen ? (
+              <IoMdClose aria-hidden="true" focusable="false" />
+            ) : (
+              <IoMdMenu aria-hidden="true" focusable="false" />
+            )}
           </button>
         </div>
       </div>
@@ -70,7 +83,7 @@ export default function Navbar() {
                   to={link.to}
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block  ${isActive ? "underline" : ""}`
+                    `block  ${isActive ? "underline underline-offset-2" : ""}`
                   }
                 >
                   {link.name}
