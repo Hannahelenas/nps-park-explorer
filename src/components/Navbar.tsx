@@ -13,11 +13,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full absolute top-0 bg-[var(--color-bg)] z-20"
+      className="w-full absolute top-0 bg-[var(--color-bg)] z-20 "
       aria-label="Main navigation"
     >
       <div
-        className="max-w-6xl mx-auto py-5 md:py-3 grid grid-cols-2 
+        className="max-w-6xl mx-auto py-4 md:py-2 grid grid-cols-2 
         lg:grid-cols-3 items-center px-5 sm:px-10 xl:px-5"
       >
         {/* Logo text */}
@@ -34,8 +34,9 @@ export default function Navbar() {
             <li key={link.to} className="">
               <NavLink
                 to={link.to}
+                end
                 className={({ isActive }) =>
-                  ` ${isActive ? "underline" : ""} p-2`
+                  ` ${isActive ? "underline underline-offset-2" : ""} p-2`
                 }
               >
                 {link.name}
@@ -81,6 +82,7 @@ export default function Navbar() {
               <li key={link.to}>
                 <NavLink
                   to={link.to}
+                  end
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     `block  ${isActive ? "underline underline-offset-2" : ""}`
