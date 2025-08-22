@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../animations.css";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
+import FavouritesNavButton from "./common/FavouritesNavButton";
 
 const links = [
   { name: "Home", to: "/" },
@@ -56,6 +57,7 @@ export default function Navbar() {
           >
             Log in
           </button>
+          <FavouritesNavButton />
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}

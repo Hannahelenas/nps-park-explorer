@@ -7,7 +7,7 @@ import {
 export function useParkContext(): ParkContextProps {
   const context = useContext(ParkContext);
   if (!context) {
-    throw new Error("useParkContext must be used within a ParkProvider");
+    throw new Error("useParkContext must be used in ParkProvider");
   }
   return context;
 }
