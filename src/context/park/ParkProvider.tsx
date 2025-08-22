@@ -22,16 +22,6 @@ export const ParkProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  /* const getParkByCode = async (parkCode: string): Promise<Park | null> => {
-    try {
-      const data = await fetchPark(parkCode);
-      return data;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  }; */
-
   const getParkByCode = useCallback(
     async (parkCode: string): Promise<Park | null> => {
       try {

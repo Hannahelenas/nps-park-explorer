@@ -23,7 +23,6 @@ export const stateNames: Record<string, string> = {
   MA: "Massachusetts",
   MI: "Michigan",
   MN: "Minnesota",
-  MP: "Northern Mariana Islands",
   MS: "Mississippi",
   MO: "Missouri",
   MT: "Montana",
@@ -35,6 +34,7 @@ export const stateNames: Record<string, string> = {
   NY: "New York",
   NC: "North Carolina",
   ND: "North Dakota",
+  MP: "Northern Mariana Islands",
   OH: "Ohio",
   OK: "Oklahoma",
   OR: "Oregon",
@@ -59,3 +59,4 @@ export function getFullStateNames(codes: string): string[] {
     .map((code) => stateNames[code.trim()])
     .filter(Boolean);
 }
+

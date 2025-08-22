@@ -4,6 +4,7 @@ import ParkOverviewHero from "../components/ParkOverviewHero";
 import OpeningHoursSection from "../components/OpeningHoursSection";
 import ParkIntroSection from "../components/ParkIntroSection";
 import ThingsToDoSection from "../components/ThingsToDoSection";
+import FavouriteButton from "../components/common/FavouriteButton";
 
 const ParkOverview = () => {
   const { parkCode } = useParams<{ parkCode: string }>();
@@ -47,11 +48,20 @@ const ParkOverview = () => {
         </ul>
         <ul
           className="flex flex-row flex-wrap font-serif font-medium 
-        items-start gap-4 md:gap-8 py-2 md:py-5"
+        items-start justify-center gap-4 md:gap-8 py-2 md:py-5"
         >
           <li className="">Alerts</li>
-          <li>Contact</li>
-          <li>Fees</li>
+          <li className="">
+            {parkCode && park?.fullName && (
+              <FavouriteButton
+                park={{
+                  parkCode,
+                  name: park.fullName,
+                  imageUrl: park.images[0]?.url,
+                }}
+              />
+            )}
+          </li>
         </ul>
       </section>
       {/* Park intro section */}
