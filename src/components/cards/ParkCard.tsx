@@ -24,7 +24,10 @@ const ParkCard = ({ park }: ParkCardProps) => {
           className="aspect-[3/2] w-full object-cover rounded-xl"
           loading="lazy"
         />
-        <h2 className="text-2xl lg:text-3xl mb-2 font-black mt-2">
+        <h2
+          className="text-2xl lg:text-2xl mb-2 font-black tracking-tighter 
+        mt-2"
+        >
           {park.fullName}
         </h2>
         <p className="tracking-wide leading-relaxed font-serif font-bold">
