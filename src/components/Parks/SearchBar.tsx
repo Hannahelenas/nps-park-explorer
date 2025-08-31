@@ -19,12 +19,9 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto flex items-center"
+      className="max-w-3xl mx-auto flex justify-center  "
     >
-      <div
-        className="flex mx-auto bg-white 
-        rounded-3xl overflow-hidden w-5/6"
-      >
+      <div className="flex bg-white rounded-3xl ">
         {/* Search field */}
         <label htmlFor="park-search" className="sr-only">
           Search parks
@@ -36,36 +33,39 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           ref={inputRef}
-          className="w-full md:w-2xl p-3 rounded-l-3xl"
+          className="sm:w-sm md:w-md flex-1 p-3 rounded-3xl"
         />
 
-        {/* Clear button */}
-        {query && (
+        {/* Clear button placeholder */}
+        <div className="w-12 flex items-center justify-center">
           <button
             type="button"
             onClick={() => {
               onClear();
               inputRef.current?.focus();
             }}
-            className="p-3 hover:bg-gray-100 transition"
             aria-label="Clear search input"
+            className={`transition-opacity ${
+              query
+                ? "opacity-100 pointer-events-auto hover:cursor-pointer"
+                : "opacity-0 pointer-events-none"
+            }`}
           >
-            <FiX size={20} aria-hidden="true" />
+            <FiX size={20} />
           </button>
-        )}
+        </div>
 
         {/* Search button */}
         <button
           type="submit"
           aria-label="Search parks"
-          className="bg-[var(--color-text)] border-2 
-          border-[var(--color-text)] px-6 py-3 text-white rounded-full 
-          transition-all 
-          duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
-           hover:text-black 
-          hover:border-[var(--color-primary)]"
+          className="flex justify-center bg-[var(--color-text)] 
+          border-2 border-[var(--color-text)]
+           px-6 py-3 text-white rounded-3xl transition-all 
+           duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
+            hover:text-black hover:border-[var(--color-primary)]"
         >
-          <FiSearch size={20} aria-hidden="true" />
+          <FiSearch size={20} />
         </button>
       </div>
     </form>
