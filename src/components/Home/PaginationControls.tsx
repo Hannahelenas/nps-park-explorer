@@ -18,11 +18,14 @@ const PaginationControls = ({
       onClick={onPrev}
       disabled={page === 0}
       aria-label="Previous parks"
-      className={`p-2 flex items-center justify-center border-2 rounded-full 
-        text-2xl ${
+      className={`p-3 flex items-center justify-center border-2 rounded-full 
+        text-xl ${
           page === 0
-            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-            : "hover:bg-gray-100 hover:cursor-pointer"
+            ? "bg-transparent cursor-not-allowed opacity-45"
+            : `bg-[var(--color-text)] border-[var(--color-text)] text-white 
+            hover:bg-transparent hover:text-[var(--color-text)] 
+            hover:border-[var(--color-text)] hover:cursor-pointer  
+            transition-all duration-300 ease-in-out `
         }`}
     >
       <IoArrowBackOutline />
@@ -31,11 +34,14 @@ const PaginationControls = ({
       onClick={onNext}
       disabled={page === totalPages - 1}
       aria-label="Next parks"
-      className={`p-2 flex items-center justify-center border-2 rounded-full 
-        text-2xl ${
+      className={`p-3 flex items-center justify-center border-2 rounded-full 
+        text-xl ${
           page === totalPages - 1
-            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-            : "hover:bg-gray-100 hover:cursor-pointer"
+            ? "bg-transparent  cursor-not-allowed opacity-45"
+            : `bg-[var(--color-text)] border-[var(--color-text)] text-white 
+            hover:bg-transparent hover:text-[var(--color-text)] 
+            hover:border-[var(--color-text)] hover:cursor-pointer  
+            transition-all duration-300 ease-in-out `
         }`}
     >
       <IoArrowForwardOutline />
