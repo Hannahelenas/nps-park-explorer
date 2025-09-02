@@ -130,7 +130,10 @@ const ParkList = () => {
         </>
       ) : (
         <div className="mt-8 mb-6 flex flex-col items-center justify-center">
-          <p className="mb-2">No parks found for "{query}"</p>
+          <p className="mb-6">No parks found for "{query}"</p>
+          <SecondaryButton type="button" onClick={handleClear}>
+            Clear search
+          </SecondaryButton>
         </div>
       )}
     </div>
