@@ -19,9 +19,9 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto flex justify-center  "
+      className="max-w-3xl mx-auto flex justify-center"
     >
-      <div className="flex bg-white rounded-3xl ">
+      <div className="flex bg-white rounded-3xl">
         {/* Search field */}
         <label htmlFor="park-search" className="sr-only">
           Search parks
@@ -37,7 +37,7 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
         />
 
         {/* Clear button placeholder */}
-        <div className="w-12 flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <button
             type="button"
             onClick={() => {
@@ -45,13 +45,14 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
               inputRef.current?.focus();
             }}
             aria-label="Clear search input"
-            className={`transition-opacity ${
-              query
-                ? "opacity-100 pointer-events-auto hover:cursor-pointer"
-                : "opacity-0 pointer-events-none"
-            }`}
+            className={`w-11 h-11 flex items-center justify-center 
+                transition-opacity ${
+                  query
+                    ? "opacity-100 pointer-events-auto hover:cursor-pointer"
+                    : "opacity-0 pointer-events-none"
+                }`}
           >
-            <FiX size={20} />
+            <FiX size={20} aria-hidden="true" />
           </button>
         </div>
 
@@ -65,7 +66,7 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
             hover:text-black hover:border-[var(--color-primary)]"
         >
-          <FiSearch size={20} />
+          <FiSearch size={20} aria-hidden="true" />
         </button>
       </div>
     </form>
