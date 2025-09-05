@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HomeHero = () => {
   return (
     <section
-      className="mt-20 grid grid-cols-1 lg:grid-cols-2 max-w-6xl mx-auto 
+      className="mt-19 grid grid-cols-1 lg:grid-cols-2 max-w-6xl mx-auto 
     rounded-3xl px-5"
     >
       <div

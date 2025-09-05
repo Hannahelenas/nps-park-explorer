@@ -10,7 +10,7 @@ const FavouritesNavButton = () => {
     <Link
       to="/favourites"
       aria-label="Go to favourites"
-      className="relative flex items-center justify-center hover:cursor-pointer"
+      className="relative flex items-center justify-center hover:cursor-pointer p-2"
     >
       {hasFavourites ? (
         <IoMdHeart className="text-[var(--color-text)] text-3xl" />
