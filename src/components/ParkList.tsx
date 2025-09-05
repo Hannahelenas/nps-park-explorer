@@ -46,7 +46,7 @@ const ParkList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
+    <div className="max-w-6xl mx-auto px-1">
       {/* Park search form */}
       <div className="w-full flex justify-center">
         <SearchBar

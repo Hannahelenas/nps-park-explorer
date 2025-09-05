@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../animations.css";
-import { IoMdClose, IoMdMenu } from "react-icons/io";
 import FavouritesNavButton from "./common/FavouritesNavButton";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 const links = [
   { name: "Home", to: "/" },
@@ -18,14 +18,15 @@ export default function Navbar() {
       aria-label="Main navigation"
     >
       <div
-        className="max-w-6xl mx-auto py-4 md:py-2 grid grid-cols-2 
-        lg:grid-cols-3 items-center px-5 sm:px-10 xl:px-5"
+        className="max-w-6xl mx-auto py-4 md:py-2 grid grid-cols-1 
+        lg:grid-cols-3 items-center px-3 sm:px-10 xl:px-5"
       >
         {/* Logo text */}
         <Link
           to="/"
-          className="text-2xl md:text-3xl tracking-tighter font-light font-serif
-          xl:py-2"
+          className="text-2xl md:text-3xl tracking-tighter font-normal 
+          font-serif
+          xl:py-2 xl:pl-0 pl-2"
         >
           Park Explorer
         </Link>
@@ -37,7 +38,9 @@ export default function Navbar() {
                 to={link.to}
                 end
                 className={({ isActive }) =>
-                  ` ${isActive ? "underline underline-offset-2" : ""} p-2`
+                  ` ${
+                    isActive ? "underline underline-offset-2" : ""
+                  } p-2 font-semibold leading-relaxed  `
                 }
               >
                 {link.name}
@@ -46,7 +49,11 @@ export default function Navbar() {
           ))}
         </ul>
         {/* Button container */}
-        <div className="flex justify-end items-center gap-4 col-start-3">
+        <div
+          className="flex justify-end items-center gap-1 sm:gap-2 
+        col-start-3 "
+        >
+          {" "}
           <button
             type="button"
             className="hidden lg:inline bg-[var(--color-primary)] border-2 
@@ -61,16 +68,16 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-2xl p-3"
+            className="lg:hidden text-3xl p-2"
             aria-label={
               menuOpen ? "Close navigation menu" : "Open navigation menu"
             }
             aria-expanded={menuOpen}
           >
             {menuOpen ? (
-              <IoMdClose aria-hidden="true" focusable="false" />
+              <IoCloseOutline aria-hidden="true" focusable="false" />
             ) : (
-              <IoMdMenu aria-hidden="true" focusable="false" />
+              <IoMenuOutline aria-hidden="true" focusable="false" />
             )}
           </button>
         </div>
