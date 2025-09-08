@@ -11,7 +11,7 @@ const ParkIntroSection = ({ park }: ParkIntroSectionProps) => {
       grid-cols-1 lg:grid-cols-2 gap-8 mt-2"
     >
       <div>
-        <h2 className="text-2xl md:text-3xl font-black tracking-tighter mb-2">
+        <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-6">
           Introduction
         </h2>
         <p className="mt-2 font-serif leading-relaxed">{park.description}</p>
