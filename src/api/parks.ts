@@ -54,6 +54,7 @@ export async function fetchParks(): Promise<Park[]> {
         typeof item.contacts === "object"
           ? item.contacts
           : { phoneNumbers: [], emailAddresses: [] },
+      latLong: item.latLong,
     }));
 
   return parks;
