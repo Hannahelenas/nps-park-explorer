@@ -15,6 +15,7 @@ export interface Park {
   addresses: Address[];
   operatingHours: OperatingHours[];
   contacts: ContactInfo;
+  latLong: string;
 }
 
 export interface Activity {

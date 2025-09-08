@@ -24,4 +24,5 @@ export interface ApiPark {
   addresses: Address[];
   operatingHours: OperatingHours[];
   contacts: ContactInfo;
+  latLong: string;
 }
