@@ -59,4 +59,3 @@ export function getFullStateNames(codes: string): string[] {
     .map((code) => stateNames[code.trim()])
     .filter(Boolean);
 }
-
