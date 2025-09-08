@@ -8,21 +8,21 @@ import {
 import { MdOutlineCloud } from "react-icons/md";
 import type { JSX } from "react/jsx-runtime";
 
+const iconSize = "text-7xl";
+
+const weatherIcons: Record<string, JSX.Element> = {
+  clear: <IoSunny className={`text-yellow-500 ${iconSize}`} />,
+  clouds: <IoCloudy className={`text-gray-500 ${iconSize}`} />,
+  rain: <IoRainy className={`text-blue-500 ${iconSize}`} />,
+  drizzle: <MdOutlineCloud className={`text-blue-500 ${iconSize}`} />,
+  thunderstorm: <IoThunderstorm className={`text-purple-600 ${iconSize}`} />,
+  snow: <IoSnow className={`text-blue-500 ${iconSize}`} />,
+};
+
 export function getWeatherIcon(main: string): JSX.Element {
-  switch (main.toLowerCase()) {
-    case "clear":
-      return <IoSunny className="text-yellow-500 text-7xl" />;
-    case "clouds":
-      return <IoCloudy className="text-gray-500 text-7xl" />;
-    case "rain":
-      return <IoRainy className="text-blue-500 text-7xl" />;
-    case "drizzle":
-      return <MdOutlineCloud className="text-blue-500 text-7xl" />;
-    case "thunderstorm":
-      return <IoThunderstorm className="text-purple-600 text-7xl" />;
-    case "snow":
-      return <IoSnow className="text-blue-500 text-7xl" />;
-    default:
-      return <MdOutlineCloud className="text-gray-500 text-7xl" />;
-  }
+  return (
+    weatherIcons[main.toLowerCase()] ?? (
+      <MdOutlineCloud className={`text-gray-500 ${iconSize}`} />
+    )
+  );
 }
