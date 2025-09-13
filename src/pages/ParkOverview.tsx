@@ -6,6 +6,7 @@ import ParkIntroSection from "../components/ParkIntroSection";
 import ThingsToDoSection from "../components/ThingsToDoSection";
 import FavouriteButton from "../components/common/FavouriteButton";
 import ParkWeatherSection from "../components/ParkWeatherSection";
+import VisitorCentersSection from "../components/VisitorCentersSection";
 
 const ParkOverview = () => {
   const { parkCode } = useParams<{ parkCode: string }>();
@@ -70,6 +71,8 @@ const ParkOverview = () => {
       {park && <ParkWeatherSection park={park} />}
       {/* Things to do section */}
       {park && parkCode && <ThingsToDoSection parkCode={parkCode} />}
+      {/* Visitor centers section */}
+      {parkCode && <VisitorCentersSection parkCode={parkCode} />}
       {/* Opening hours section */}
       {park && <OpeningHoursSection park={park} />}
     </section>
