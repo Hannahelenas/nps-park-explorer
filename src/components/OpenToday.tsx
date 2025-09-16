@@ -27,7 +27,7 @@ const OpenToday = ({ operatingHours }: OpenTodayProps) => {
       ? `Open today ${todayHours}`
       : "Closed today";
 
-  return <p className="font-bold mt-2">{text}</p>;
+  return <p className="font-bold font-serif leading-relaxed">{text}</p>;
 };
 
 export default OpenToday;
