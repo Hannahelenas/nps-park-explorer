@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useVisitorCenterContext } from "../hooks/useVisitorCenterContext";
 import type { VisitorCenter } from "../types/VisitorCenter";
-import OpenToday from "../components/OpenToday";
+import VisitorCenterCard from "./cards/VisitorCenterCard";
 
 interface VisitorCentersSectionProps {
   parkCode: string;
@@ -36,25 +36,16 @@ const VisitorCentersSection = ({ parkCode }: VisitorCentersSectionProps) => {
     return <p>No visitor centers to show for this park.</p>;
 
   return (
-    <section className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-5 py-5">
+    <section className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-10 xl:px-5 py-5">
       <h2
         className="text-2xl md:text-4xl font-black tracking-tighter mb-6 
       mt-6"
       >
         Visitor Centers
       </h2>
-      <ul className="grid grid-cols-1 gap-6">
+      <ul className="grid grid-cols-1 gap-1 border-b">
         {visitorCenters.map((vc) => (
-          <li key={vc.id} className="rounded-2xl p-6 bg-white">
-            <h3 className="text-2xl mb-2 font-black tracking-tighter">
-              {vc.name}
-            </h3>
-            <p className="text-md leading-relaxed mb-2">{vc.description}</p>
-            <div className="flex justify-between items-center mt-2">
-              {/* Open today info */}
-              <OpenToday operatingHours={vc.operatingHours} />
-            </div>
-          </li>
+          <VisitorCenterCard key={vc.id} vc={vc} />
         ))}
       </ul>
     </section>

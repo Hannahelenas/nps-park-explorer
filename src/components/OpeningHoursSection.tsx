@@ -12,7 +12,7 @@ const OpeningHoursSection = ({ park }: OpeningHoursSectionProps) => {
       aria-labelledby="opening-hours-heading"
     >
       {" "}
-      <div className="border-t">
+      <div className="">
         <h2
           className="text-2xl md:text-4xl font-black tracking-tighter mb-6 mt-6"
           id="opening-hours-heading"
