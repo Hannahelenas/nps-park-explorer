@@ -21,6 +21,10 @@
 }
 
 /* Base styling */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-noto-sans);
   background-color: var(--color-bg);
@@ -33,4 +37,10 @@ body {
 
 .bg-color-button-primary {
   background-color: var(--color-button-primary);
+}
+
+/* Leaflet map text styling */
+.leaflet-control-attribution a {
+  color: var(--color-text) !important;
+  text-decoration: underline;
 }
