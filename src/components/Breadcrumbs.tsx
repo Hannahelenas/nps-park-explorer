@@ -12,7 +12,7 @@ const Breadcrumbs = () => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="bg-white sm:px-5 py-4 md:py-3 z-20 mt-20 md:mt-17"
+      className="bg-white sm:px-5 py-4 md:py-2 z-20 mt-20 md:mt-17"
     >
       <ol
         className="max-w-6xl mx-auto px-5 flex items-center space-x-2 text-md 

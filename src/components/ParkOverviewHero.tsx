@@ -12,7 +12,7 @@ const ParkOverviewHero = ({ park }: ParkOverviewHeroProps) => {
           src={park.images[0]?.url}
           alt={park.images[0]?.altText}
           loading="lazy"
-          className="w-full h-[30dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[70dvh] 
+          className="w-full h-[30dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[73dvh] 
           object-cover"
         />
         <div
