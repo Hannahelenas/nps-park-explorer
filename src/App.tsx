@@ -8,6 +8,7 @@ import ParkOverview from "./pages/ParkOverview";
 import { FavouritesProvider } from "./context/favourites/FavouritesProvider";
 import Favourites from "./pages/Favourites";
 import { VisitorCenterProvider } from "./context/visitorcenters/VisitorCenterProvider";
+import { ParkingLotProvider } from "./context/parkingLots/ParkingLotProvider";
 
 const router = createBrowserRouter([
   {
@@ -27,9 +28,11 @@ function App() {
     <>
       <FavouritesProvider>
         <ParkProvider>
-          <VisitorCenterProvider>
-            <RouterProvider router={router} />
-          </VisitorCenterProvider>
+          <ParkingLotProvider>
+            <VisitorCenterProvider>
+              <RouterProvider router={router} />
+            </VisitorCenterProvider>
+          </ParkingLotProvider>
         </ParkProvider>
       </FavouritesProvider>
     </>
