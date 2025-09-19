@@ -2,38 +2,57 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { MdLocationOn } from "react-icons/md";
 import type { VisitorCenter } from "../types/VisitorCenter";
+import type { ParkingLot } from "../types/ParkingLot";
 import type { LatLngExpression } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 
 interface ParkMapProps {
   visitorCenters: VisitorCenter[];
+  parkingLots: ParkingLot[];
 }
 
-const ParkMap = ({ visitorCenters }: ParkMapProps) => {
+const ParkMap = ({ visitorCenters, parkingLots }: ParkMapProps) => {
   // Fliter valid coordinates
   const validCenters = visitorCenters.filter(
     (vc) =>
-      vc.latitude &&
-      vc.longitude &&
-      !isNaN(parseFloat(vc.latitude)) &&
-      !isNaN(parseFloat(vc.longitude))
+      vc.latitude != null &&
+      vc.longitude != null &&
+      !isNaN(Number(vc.latitude)) &&
+      !isNaN(Number(vc.longitude))
+  );
+
+  const validParkingLots = parkingLots.filter(
+    (pl) =>
+      pl.latitude != null &&
+      pl.longitude != null &&
+      !isNaN(Number(pl.latitude)) &&
+      !isNaN(Number(pl.longitude))
   );
 
   // Count center point on map
+  const allLatitudes = [
+    ...validCenters.map((vc) => Number(vc.latitude)),
+    ...validParkingLots.map((pl) => Number(pl.latitude)),
+  ];
+
+  const allLongitudes = [
+    ...validCenters.map((vc) => Number(vc.longitude)),
+    ...validParkingLots.map((pl) => Number(pl.longitude)),
+  ];
+
   const center: LatLngExpression =
-    validCenters.length > 0
+    allLatitudes.length > 0
       ? [
-          validCenters.reduce((sum, vc) => sum + parseFloat(vc.latitude), 0) /
-            validCenters.length,
-          validCenters.reduce((sum, vc) => sum + parseFloat(vc.longitude), 0) /
-            validCenters.length,
+          allLatitudes.reduce((sum, lat) => sum + lat, 0) / allLatitudes.length,
+          allLongitudes.reduce((sum, lng) => sum + lng, 0) /
+            allLongitudes.length,
         ]
       : [37.8, -96];
 
   // Create map icon
-  const createLocationIcon = () => {
+  const createLocationIcon = (color: string) => {
     const markup = renderToStaticMarkup(
-      <MdLocationOn className="text-black text-4xl" />
+      <MdLocationOn style={{ color }} className="text-4xl" />
     );
 
     return L.divIcon({
@@ -55,15 +74,31 @@ const ParkMap = ({ visitorCenters }: ParkMapProps) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
       />
+
+      {/* Visitor Centers */}
       {validCenters.map((vc) => (
         <Marker
           key={vc.id}
-          position={[parseFloat(vc.latitude), parseFloat(vc.longitude)]}
-          icon={createLocationIcon()}
+          position={[Number(vc.latitude), Number(vc.longitude)]}
+          icon={createLocationIcon("black")}
         >
           <Popup>
             <strong>{vc.name}</strong>
             <p>{vc.description}</p>
+          </Popup>
+        </Marker>
+      ))}
+
+      {/* Parking Lots */}
+      {validParkingLots.map((pl) => (
+        <Marker
+          key={pl.id}
+          position={[Number(pl.latitude), Number(pl.longitude)]}
+          icon={createLocationIcon("green")}
+        >
+          <Popup>
+            <strong>{pl.name}</strong>
+            <p>{pl.description}</p>
           </Popup>
         </Marker>
       ))}
