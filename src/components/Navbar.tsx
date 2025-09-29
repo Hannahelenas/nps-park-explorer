@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../animations.css";
+import FavouritesNavButton from "./common/FavouritesNavButton";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 const links = [
   { name: "Home", to: "/" },
@@ -12,26 +14,33 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full absolute top-0 bg-[var(--color-bg)] z-20"
+      className="w-full absolute top-0 bg-[var(--color-bg)] z-20 "
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto py-5 md:py-3 grid grid-cols-2 lg:grid-cols-3 items-center px-5">
+      <div
+        className="max-w-6xl mx-auto py-4 md:py-2 grid grid-cols-1 
+        lg:grid-cols-3 items-center px-3 sm:px-10 xl:px-5"
+      >
         {/* Logo text */}
         <Link
           to="/"
-          className="text-2xl md:text-4xl tracking-tighter font-light font-serif xl:py-2"
+          className="text-2xl md:text-3xl tracking-tighter font-normal 
+          font-serif
+          xl:py-2 xl:pl-0 pl-2"
         >
           Park Explorer
         </Link>
-
         {/* Desktop links */}
         <ul className="hidden lg:flex justify-center gap-8">
           {links.map((link) => (
             <li key={link.to} className="">
               <NavLink
                 to={link.to}
+                end
                 className={({ isActive }) =>
-                  ` ${isActive ? "underline" : ""} p-2`
+                  ` ${
+                    isActive ? "underline underline-offset-2" : ""
+                  } p-2 font-semibold leading-relaxed  `
                 }
               >
                 {link.name}
@@ -39,26 +48,37 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
         {/* Button container */}
-        <div className="flex justify-end items-center gap-4 col-start-3">
+        <div
+          className="flex justify-end items-center gap-1 sm:gap-2 
+        col-start-3 "
+        >
+          {" "}
           <button
             type="button"
             className="hidden lg:inline bg-[var(--color-primary)] border-2 
             border-[var(--color-primary)]  px-5 py-2 rounded-full transition-all 
-        duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent hover:text-black 
-        hover:border-[var(--color-primary)] focus:outline-teal-600"
+            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
+           hover:text-black hover:border-[var(--color-primary)]
+          focus:outline-teal-600"
           >
             Log in
           </button>
-
+          <FavouritesNavButton />
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden  text-xl"
-            aria-label="Open menu"
+            className="lg:hidden text-3xl p-2"
+            aria-label={
+              menuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={menuOpen}
           >
-            Menu
+            {menuOpen ? (
+              <IoCloseOutline aria-hidden="true" focusable="false" />
+            ) : (
+              <IoMenuOutline aria-hidden="true" focusable="false" />
+            )}
           </button>
         </div>
       </div>
@@ -71,9 +91,10 @@ export default function Navbar() {
               <li key={link.to}>
                 <NavLink
                   to={link.to}
+                  end
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block  ${isActive ? "underline" : ""}`
+                    `block  ${isActive ? "underline underline-offset-2" : ""}`
                   }
                 >
                   {link.name}

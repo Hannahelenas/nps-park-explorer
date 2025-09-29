@@ -3,6 +3,12 @@ import "./App.css";
 import Home from "./pages/Home";
 import Parks from "./pages/Parks";
 import Layout from "./components/Layout";
+import { ParkProvider } from "./context/park/ParkProvider";
+import ParkOverview from "./pages/ParkOverview";
+import { FavouritesProvider } from "./context/favourites/FavouritesProvider";
+import Favourites from "./pages/Favourites";
+import { VisitorCenterProvider } from "./context/visitorcenters/VisitorCenterProvider";
+import { ParkingLotProvider } from "./context/parkingLots/ParkingLotProvider";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +17,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "parks", element: <Parks /> },
+      { path: "parks/:parkCode", element: <ParkOverview /> },
+      { path: "favourites", element: <Favourites /> },
     ],
   },
 ]);
@@ -18,7 +26,15 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <FavouritesProvider>
+        <ParkProvider>
+          <ParkingLotProvider>
+            <VisitorCenterProvider>
+              <RouterProvider router={router} />
+            </VisitorCenterProvider>
+          </ParkingLotProvider>
+        </ParkProvider>
+      </FavouritesProvider>
     </>
   );
 }
