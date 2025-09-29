@@ -5,6 +5,7 @@ import type { VisitorCenter } from "../types/VisitorCenter";
 import type { ParkingLot } from "../types/ParkingLot";
 import type { LatLngExpression } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
+import { TbParkingCircleFilled } from "react-icons/tb";
 
 interface ParkMapProps {
   visitorCenters: VisitorCenter[];
@@ -52,57 +53,80 @@ const ParkMap = ({ visitorCenters, parkingLots }: ParkMapProps) => {
   // Create map icon
   const createLocationIcon = (color: string) => {
     const markup = renderToStaticMarkup(
-      <MdLocationOn style={{ color }} className="text-4xl" />
+      <MdLocationOn
+        style={{ color }}
+        className="text-4xl bg-white rounded-lg"
+      />
     );
 
     return L.divIcon({
       html: markup,
       className: "",
-      iconSize: [35, 35],
-      iconAnchor: [16, 32],
+    });
+  };
+
+  const createParkingLotIcon = (color: string) => {
+    const markup = renderToStaticMarkup(
+      <TbParkingCircleFilled
+        style={{ color }}
+        className="text-4xl bg-white rounded-lg"
+      />
+    );
+
+    return L.divIcon({
+      html: markup,
+      className: "",
+      popupAnchor: [0, -10],
     });
   };
 
   return (
-    <MapContainer
-      center={center}
-      zoom={9}
-      scrollWheelZoom
-      className="w-full h-70 lg:h-96"
+    <div
+      role="application"
+      aria-label="Map showing visitor centers and parking lots"
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-      />
+      <MapContainer
+        center={center}
+        zoom={8}
+        scrollWheelZoom
+        className="w-full h-70 lg:h-96"
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        />
 
-      {/* Visitor Centers */}
-      {validCenters.map((vc) => (
-        <Marker
-          key={vc.id}
-          position={[Number(vc.latitude), Number(vc.longitude)]}
-          icon={createLocationIcon("black")}
-        >
-          <Popup>
-            <strong>{vc.name}</strong>
-            <p>{vc.description}</p>
-          </Popup>
-        </Marker>
-      ))}
+        {/* Visitor Centers */}
+        {validCenters.map((vc) => (
+          <Marker
+            key={vc.id}
+            position={[Number(vc.latitude), Number(vc.longitude)]}
+            icon={createLocationIcon("black")}
+            title={vc.name}
+          >
+            <Popup>
+              <strong>{vc.name}</strong>
+              <p>{vc.description}</p>
+            </Popup>
+          </Marker>
+        ))}
 
-      {/* Parking Lots */}
-      {validParkingLots.map((pl) => (
-        <Marker
-          key={pl.id}
-          position={[Number(pl.latitude), Number(pl.longitude)]}
-          icon={createLocationIcon("green")}
-        >
-          <Popup>
-            <strong>{pl.name}</strong>
-            <p>{pl.description}</p>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+        {/* Parking Lots */}
+        {validParkingLots.map((pl) => (
+          <Marker
+            key={pl.id}
+            position={[Number(pl.latitude), Number(pl.longitude)]}
+            icon={createParkingLotIcon("black")}
+            title={pl.name}
+          >
+            <Popup>
+              <strong>{pl.name}</strong>
+              <p>{pl.description}</p>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 };
 
