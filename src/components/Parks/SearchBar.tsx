@@ -19,7 +19,8 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto flex justify-center"
+      className="max-w-3xl mx-auto flex justify-center bg-white p-2 
+      rounded-full"
     >
       <div className="flex bg-white rounded-3xl">
         {/* Search field */}
@@ -33,7 +34,7 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           ref={inputRef}
-          className="sm:w-sm md:w-md flex-1 p-3 rounded-3xl"
+          className="sm:w-sm md:w-md flex-1 pl-3 rounded-3xl"
         />
 
         {/* Clear button placeholder */}
@@ -60,12 +61,14 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
         <button
           type="submit"
           aria-label="Search parks"
-          className="flex justify-center bg-[var(--color-text)] 
+          className="flex items-center justify-center bg-[var(--color-text)] 
           border-2 border-[var(--color-text)]
-           px-6 py-3 text-white rounded-3xl transition-all 
+           px-4 py-3 text-white rounded-4xl transition-all 
            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
-            hover:text-black hover:border-[var(--color-primary)]"
+            hover:text-black hover:border-[var(--color-primary)] gap-1"
         >
+          {" "}
+          Search
           <FiSearch size={20} aria-hidden="true" />
         </button>
       </div>
