@@ -19,7 +19,7 @@ const FeaturedParksList = ({ parks }: FeaturedParksListProps) => {
               <img
                 src={park.images[0]?.url}
                 alt={park.images[0]?.altText || park.name}
-                className="aspect-[4/3] w-full object-cover rounded-xl"
+                className="aspect-[4/3] w-full object-cover rounded-2xl"
                 loading="lazy"
               />
               <h3
