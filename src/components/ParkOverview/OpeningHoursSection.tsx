@@ -10,7 +10,7 @@ const OpeningHoursSection = ({ park }: OpeningHoursSectionProps) => {
   return (
     <section
       id="park-opeing-hours-section"
-      className="max-w-6xl px-5 mx-auto mt-5 mb-6 py-12"
+      className="max-w-6xl px-5 sm:px-10 xl:px-5 mx-auto mt-5 mb-6 py-12"
       aria-labelledby="opening-hours-heading"
     >
       <div>
