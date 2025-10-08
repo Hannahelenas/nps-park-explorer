@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useParkData } from "../hooks/useParkData";
-import ParkOverviewHero from "../components/ParkOverviewHero";
-import OpeningHoursSection from "../components/OpeningHoursSection";
-import ParkIntroSection from "../components/ParkIntroSection";
-import ThingsToDoSection from "../components/ThingsToDoSection";
-import FavouriteButton from "../components/common/FavouriteButton";
-import ParkWeatherSection from "../components/ParkWeatherSection";
-import VisitorCentersSection from "../components/VisitorCentersSection";
-import ParkMapSection from "../components/ParkMapSection";
+import ParkOverviewHero from "../components/ParkOverview/ParkOverviewHero";
+import OpeningHoursSection from "../components/ParkOverview/OpeningHoursSection";
+import ParkIntroSection from "../components/ParkOverview/ParkIntroSection";
+import ThingsToDoSection from "../components/ParkOverview/ThingsToDoSection";
+import ParkWeatherSection from "../components/ParkOverview/ParkWeatherSection";
+import VisitorCentersSection from "../components/ParkOverview/VisitorCentersSection";
+import ParkMapSection from "../components/ParkOverview/ParkMapSection";
+import ParkOverviewNavSection from "../components/ParkOverview/ParkOverviewNavSection";
 
 const ParkOverview = () => {
   const { parkCode } = useParams<{ parkCode: string }>();
@@ -29,56 +29,38 @@ const ParkOverview = () => {
       </div>
     );
   }
+
   if (error) return <div>Error: {error}</div>;
   if (!park) return <div>No park found.</div>;
 
   return (
-    /* Hero section */
     <section className="mt-0 relative">
+      {/* Hero section */}
       {park && <ParkOverviewHero park={park} />}
-      <section
-        className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-5 flex 
-      flex-col lg:flex-row justify-between"
-      >
-        <ul
-          className="flex flex-row flex-wrap font-serif font-medium 
-        items-start gap-4 md:gap-8 py-2 md:py-5 "
-        >
-          <li className="">Activities</li>
-          <li className="">Campsites</li>
-          <li className="">
-            <a href="#map-section">Map</a>
-          </li>
-          <li className="">Opening hours</li>
-          <li className="">Visitor centers</li>
-        </ul>
-        <ul
-          className="flex flex-row flex-wrap font-serif font-medium 
-        items-start justify-center gap-4 md:gap-8 py-2 md:py-5"
-        >
-          <li className="">Alerts</li>
-          <li className="">
-            {parkCode && park?.fullName && (
-              <FavouriteButton
-                park={{
-                  parkCode,
-                  name: park.fullName,
-                  imageUrl: park.images[0]?.url,
-                }}
-              />
-            )}
-          </li>
-        </ul>
-      </section>
+
+      {/* Top navigation and small weather */}
+      {park && <ParkOverviewNavSection park={park} />}
+
       {/* Park intro section */}
       {park && <ParkIntroSection park={park} />}
+
       {/* Weather and climate section */}
       {park && <ParkWeatherSection park={park} />}
+
       {/* Things to do section */}
       {park && parkCode && <ThingsToDoSection parkCode={parkCode} />}
-      {parkCode && <ParkMapSection parkCode={parkCode} />}
+
+      {/* Map section */}
+      {parkCode && (
+        <ParkMapSection
+          directionsInfo={park.directionsInfo}
+          parkCode={parkCode}
+        />
+      )}
+
       {/* Visitor centers section */}
       {parkCode && <VisitorCentersSection parkCode={parkCode} />}
+
       {/* Opening hours section */}
       {park && <OpeningHoursSection park={park} />}
     </section>
