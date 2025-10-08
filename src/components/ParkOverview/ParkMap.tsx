@@ -1,8 +1,8 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { MdLocationOn } from "react-icons/md";
-import type { VisitorCenter } from "../types/VisitorCenter";
-import type { ParkingLot } from "../types/ParkingLot";
+import type { VisitorCenter } from "../../types/VisitorCenter";
+import type { ParkingLot } from "../../types/ParkingLot";
 import type { LatLngExpression } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import { TbParkingCircleFilled } from "react-icons/tb";
@@ -84,12 +84,13 @@ const ParkMap = ({ visitorCenters, parkingLots }: ParkMapProps) => {
     <div
       role="application"
       aria-label="Map showing visitor centers and parking lots"
+      className=" rounded-xl  p-1 bg-white shadow-md"
     >
       <MapContainer
         center={center}
         zoom={8}
         scrollWheelZoom
-        className="w-full h-70 lg:h-96"
+        className="w-full h-70 lg:h-96 rounded-2xl"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
-import { useParkContext } from "../hooks/useParkContext";
-import ParkCard from "./cards/ParkCard";
-import SecondaryButton from "./common/SecondaryButton";
-import SearchBar from "./Parks/SearchBar";
+import { useParkContext } from "../../hooks/useParkContext";
+import ParkCard from "../cards/ParkCard";
+import SecondaryButton from "../common/SecondaryButton";
+import SearchBar from "./SearchBar";
+import { getFullStateNames } from "../../utils/stateNames";
 
 const ParkList = () => {
   const { parks, loading, error } = useParkContext();
@@ -22,9 +23,23 @@ const ParkList = () => {
   if (loading) return <div>Loading parks...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  const filteredParks = parks.filter((park) =>
-    park.fullName.toLowerCase().includes(search.toLowerCase())
-  );
+  // Filter parks by name or state code or state name
+  const filteredParks = parks.filter((park) => {
+    const searchQuery = search.toLowerCase();
+
+    const parkNameMatch = park.fullName.toLowerCase().includes(searchQuery);
+
+    const stateCodeMatch = park.states
+      .split(",")
+      .map((code) => code.trim().toLowerCase())
+      .some((code) => code === searchQuery);
+
+    const stateNameMatch = getFullStateNames(park.states)
+      .map((name) => name.toLowerCase())
+      .some((name) => name.includes(searchQuery));
+
+    return parkNameMatch || stateCodeMatch || stateNameMatch;
+  });
 
   // Count the parks shown on specific paginations
   const indexOfLast = currentPage * parksPerPage;
@@ -46,9 +61,9 @@ const ParkList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-1">
+    <div className="max-w-6xl mx-auto px-1  ">
       {/* Park search form */}
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center p-2 ">
         <SearchBar
           query={query}
           setQuery={(value) => {

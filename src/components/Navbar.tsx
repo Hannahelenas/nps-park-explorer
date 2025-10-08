@@ -14,26 +14,28 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full absolute top-0 bg-[var(--color-bg)] z-20 "
+      className="w-full absolute top-0 bg-[var(--color-primary)] z-20 "
       aria-label="Main navigation"
     >
       <div
         className="max-w-6xl mx-auto py-4 md:py-2 grid grid-cols-1 
-        lg:grid-cols-3 items-center px-3 sm:px-10 xl:px-5"
+        lg:grid-cols-3 items-center pl-5 pr-2 sm:pl-10 sm:pr-7 xl:px-5"
       >
         {/* Logo text */}
         <Link
           to="/"
-          className="text-2xl md:text-3xl tracking-tighter font-normal 
-          font-serif
-          xl:py-2 xl:pl-0 pl-2"
+          className="text-[var(--color-bg)] text-2xl md:text-3xl 
+          tracking-tighter font-bold xl:py-2 xl:pl-0"
         >
           Park Explorer
         </Link>
         {/* Desktop links */}
         <ul className="hidden lg:flex justify-center gap-8">
           {links.map((link) => (
-            <li key={link.to} className="">
+            <li
+              key={link.to}
+              className="text-white hover:underline hover:underline-offset-2"
+            >
               <NavLink
                 to={link.to}
                 end
@@ -56,10 +58,10 @@ export default function Navbar() {
           {" "}
           <button
             type="button"
-            className="hidden lg:inline bg-[var(--color-primary)] border-2 
+            className="hidden lg:inline bg-[var(--color-bg)] border-2 
             border-[var(--color-primary)]  px-5 py-2 rounded-full transition-all 
             duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
-           hover:text-black hover:border-[var(--color-primary)]
+           hover:text-[var(--color-bg)] hover:border-[var(--color-bg)]
           focus:outline-teal-600"
           >
             Log in
@@ -68,7 +70,8 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden text-3xl p-2"
+            className="lg:hidden text-3xl p-2 text-[var(--color-secondary)] 
+            "
             aria-label={
               menuOpen ? "Close navigation menu" : "Open navigation menu"
             }
@@ -85,8 +88,11 @@ export default function Navbar() {
 
       {/* Mobile navlink menu */}
       {menuOpen && (
-        <div className="lg:hidden px-5 pb-4 animate-slide-fade">
-          <ul className="flex flex-col gap-4">
+        <div className="lg:hidden px-5 sm:px-10 pb-4 animate-slide-fade">
+          <ul
+            className="flex flex-col gap-4 text-[var(--color-secondary)] 
+          font-serif"
+          >
             {links.map((link) => (
               <li key={link.to}>
                 <NavLink
