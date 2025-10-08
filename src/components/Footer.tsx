@@ -7,7 +7,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative text-center bg-color-button-primary pt-16">
+    <footer className="relative text-center bg-[var(--color-primary)] pt-16">
       {/* Wave svg */}
       <div
         className="absolute top-0 left-0 w-full overflow-hidden 
@@ -34,16 +34,16 @@ const Footer = () => {
       <section className="relative flex flex-col items-center py-8 md:py-15">
         <Link
           to="/"
-          className="text-2xl md:text-3xl tracking-tighter font-light font-serif
-          xl:py-2 text-white mb-4"
+          className="text-[var(--color-bg)] text-2xl md:text-3xl tracking-tighter
+          font-bold xl:py-2 mb-6"
         >
           Park Explorer
         </Link>
-        <p className="text-sm font-serif text-white  mb-5">
+        <p className="text-sm font-serif text-white mb-6">
           Made with curiosity and joy by Hanna.
         </p>
         <nav aria-label="Navigation links">
-          <ul className="flex flex-col sm:flex-row gap-6">
+          <ul className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             {links.map((link) => (
               <li key={link.to}>
                 <NavLink
