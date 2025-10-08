@@ -1,11 +1,16 @@
+import HeroSection from "../components/common/HeroSection";
+import ActivitiesSection from "../components/Home/ActivitiesSection";
 import FeaturedParksSection from "../components/Home/FeaturedParksSection";
-import HomeHero from "../components/HomeHero";
+//import HomeHero from "../components/HomeHero";
 
 const Home = () => {
   return (
     <>
-      <HomeHero />
+      <HeroSection />
       <FeaturedParksSection />
+      <ActivitiesSection />
+
+      {/*  <HomeHero /> */}
     </>
   );
 };
