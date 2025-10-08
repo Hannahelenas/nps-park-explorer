@@ -62,7 +62,7 @@ const FeaturedParksSection = () => {
   );
 
   return (
-    <section className="max-w-6xl px-5 mx-auto mt-10 mb-10">
+    <section className="max-w-6xl px-5 sm:px-10 xl:px-0 mx-auto mt-10 mb-10">
       <FeaturedParksHeader
         page={page}
         totalPages={totalPages}

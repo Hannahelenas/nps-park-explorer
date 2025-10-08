@@ -1,5 +1,5 @@
 import { MdOpenInNew } from "react-icons/md";
-import { weekdayOrder, type Park } from "../types/Park";
+import { weekdayOrder, type Park } from "../../types/Park";
 import { CiCircleChevDown } from "react-icons/ci";
 
 interface OpeningHoursSectionProps {
@@ -9,7 +9,8 @@ interface OpeningHoursSectionProps {
 const OpeningHoursSection = ({ park }: OpeningHoursSectionProps) => {
   return (
     <section
-      className="max-w-6xl px-5 mx-auto mt-5 mb-6 py-12"
+      id="park-opeing-hours-section"
+      className="max-w-6xl px-5 sm:px-10 xl:px-5 mx-auto mt-5 mb-6 py-12"
       aria-labelledby="opening-hours-heading"
     >
       <div>

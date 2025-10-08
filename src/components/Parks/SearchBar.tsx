@@ -20,7 +20,7 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
     <form
       onSubmit={handleSubmit}
       className="max-w-3xl mx-auto flex justify-center bg-white p-2 
-      rounded-full"
+      rounded-full border border-[var(--color-pirimary)] "
     >
       <div className="flex bg-white rounded-3xl">
         {/* Search field */}
@@ -61,8 +61,8 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
         <button
           type="submit"
           aria-label="Search parks"
-          className="flex items-center justify-center bg-[var(--color-text)] 
-          border-2 border-[var(--color-text)]
+          className="flex items-center justify-center bg-[var(--color-primary)] 
+          border-2 border-[var(--color-primary)]
            px-4 py-3 text-white rounded-4xl transition-all 
            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
             hover:text-black hover:border-[var(--color-primary)] gap-1"

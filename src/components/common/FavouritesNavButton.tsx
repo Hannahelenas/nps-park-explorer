@@ -13,9 +13,9 @@ const FavouritesNavButton = () => {
       className="relative flex items-center justify-center hover:cursor-pointer p-2"
     >
       {hasFavourites ? (
-        <IoMdHeart className="text-[var(--color-text)] text-3xl" />
+        <IoMdHeart className="text-[var(--color-secondary)] text-3xl" />
       ) : (
-        <IoMdHeartEmpty className="text-[var(--color-text)] text-3xl" />
+        <IoMdHeartEmpty className="text-[var(--color-bg)] text-3xl" />
       )}
     </Link>
   );

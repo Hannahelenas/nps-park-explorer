@@ -8,9 +8,12 @@
   --font-noto-display: "Noto Serif Display", serif;
 
   /* Light mode colors */
-  --color-bg: #f5f3ed;
+  --color-bg: #fafcf9;
   --color-text: #313a44;
-  --color-button-primary: #313a44;
+  --color-button-primary: #083b35;
+  --color-primary: #083b35;
+  --color-secondary: #f0f7ea;
+  --color-teritary: #ddefd4;
 }
 
 .dark {
@@ -18,6 +21,7 @@
   --color-bg: #313a44;
   --color-text: #f5f3ed;
   --color-button-primary: #f5f3ed;
+  --color-primary: #313a44;
 }
 
 /* Base styling */

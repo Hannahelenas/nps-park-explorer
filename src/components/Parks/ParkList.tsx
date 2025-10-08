@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
-import { useParkContext } from "../hooks/useParkContext";
-import ParkCard from "./cards/ParkCard";
-import SecondaryButton from "./common/SecondaryButton";
-import SearchBar from "./Parks/SearchBar";
-import { getFullStateNames } from "../utils/stateNames";
+import { useParkContext } from "../../hooks/useParkContext";
+import ParkCard from "../cards/ParkCard";
+import SecondaryButton from "../common/SecondaryButton";
+import SearchBar from "./SearchBar";
+import { getFullStateNames } from "../../utils/stateNames";
 
 const ParkList = () => {
   const { parks, loading, error } = useParkContext();
@@ -61,9 +61,9 @@ const ParkList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-1">
+    <div className="max-w-6xl mx-auto px-1  ">
       {/* Park search form */}
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center p-2 ">
         <SearchBar
           query={query}
           setQuery={(value) => {

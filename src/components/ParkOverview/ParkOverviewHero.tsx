@@ -1,4 +1,4 @@
-import type { Park } from "../types/Park";
+import type { Park } from "../../types/Park";
 
 interface ParkOverviewHeroProps {
   park: Park;
@@ -12,7 +12,7 @@ const ParkOverviewHero = ({ park }: ParkOverviewHeroProps) => {
           src={park.images[0]?.url}
           alt={park.images[0]?.altText}
           loading="lazy"
-          className="w-full h-[30dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[73dvh] 
+          className="w-full h-[30dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[64dvh] 
           object-cover"
         />
         <div

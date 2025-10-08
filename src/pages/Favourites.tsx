@@ -9,7 +9,7 @@ const Favourites = () => {
   return (
     <section
       className="mt-10 mb-10 lg:mt-15 flex flex-col items-center 
-    max-w-6xl mx-auto px-5"
+    max-w-6xl mx-auto px-5 py-12"
     >
       <PageHeading title="Favourites" />
       <p className="font-serif leading-relaxed text-lg">

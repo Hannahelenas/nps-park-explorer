@@ -12,10 +12,11 @@ const Breadcrumbs = () => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="bg-white sm:px-5 py-4 md:py-2 z-20 mt-20 md:mt-17"
+      className="px-5 sm:px-10 xl:px-5 py-2 sm:py-3 md:py-2 z-20 mt-20 md:mt-15 
+      lg:mt-16 xl:mt-17 max-w-6xl mx-auto"
     >
       <ol
-        className="max-w-6xl mx-auto px-5 flex items-center space-x-2 text-md 
+        className="flex items-center space-x-2 text-md 
       font-serif leading-relaxed text-[var(--color-text)]"
       >
         <li>
