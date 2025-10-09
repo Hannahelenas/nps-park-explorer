@@ -16,7 +16,7 @@ const ParkOverviewHero = ({ park }: ParkOverviewHeroProps) => {
           object-cover"
         />
         <div
-          className="absolute bottom-0 left-0 w-full h-35 sm:h-40 md:h-45
+          className="absolute bottom-[-1px] left-0 w-full h-35 sm:h-40 md:h-45
         bg-gradient-to-t from-black to-transparent pointer-events-none"
         />
       </div>
