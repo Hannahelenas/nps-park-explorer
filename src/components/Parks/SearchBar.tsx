@@ -19,7 +19,7 @@ const SearchBar = ({ query, setQuery, onSearch, onClear }: SearchBarProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto flex justify-center bg-white p-2 
+      className="max-w-3xl mx-auto flex justify-center bg-white p-1 sm:p-2 
       rounded-full border border-[var(--color-pirimary)] "
     >
       <div className="flex bg-white rounded-3xl">
