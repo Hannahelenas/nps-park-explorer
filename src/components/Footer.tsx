@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="relative text-center bg-[var(--color-primary)] pt-16">
       {/* Wave svg */}
       <div
-        className="absolute top-0 left-0 w-full overflow-hidden 
+        className="absolute top-[-0.5px] left-0 w-full overflow-hidden
       leading-none"
       >
         <svg
