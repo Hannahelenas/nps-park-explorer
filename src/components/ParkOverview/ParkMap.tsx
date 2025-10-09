@@ -107,7 +107,6 @@ const ParkMap = ({ visitorCenters, parkingLots }: ParkMapProps) => {
           >
             <Popup>
               <strong>{vc.name}</strong>
-              <p>{vc.description}</p>
             </Popup>
           </Marker>
         ))}
