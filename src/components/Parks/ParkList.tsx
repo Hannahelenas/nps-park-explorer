@@ -61,9 +61,9 @@ const ParkList = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-1  ">
+    <div className="max-w-6xl mx-auto px-0">
       {/* Park search form */}
-      <div className="w-full flex justify-center p-2 ">
+      <div className="w-full mx-auto flex justify-center p-0 sm:p-2">
         <SearchBar
           query={query}
           setQuery={(value) => {
