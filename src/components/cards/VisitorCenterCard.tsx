@@ -47,8 +47,8 @@ const VisitorCenterCard = ({ vc }: VisitorCenterCardProps) => {
             <img
               src={imageUrl}
               alt={vc.images[0].altText || vc.name}
-              className="aspect-[3/2] rounded-b-3xl xl:rounded-br-3xl 
-              xl:rounded-tr-3xl xl:rounded-bl-none xl:rounded-tl-none 
+              className="aspect-[3/2] rounded-b-3xl lg:rounded-br-3xl 
+              lg:rounded-tr-3xl lg:rounded-bl-none lg:rounded-tl-none 
               object-cover w-full h-full"
               loading="lazy"
               onError={() => setImgFailed(true)}
