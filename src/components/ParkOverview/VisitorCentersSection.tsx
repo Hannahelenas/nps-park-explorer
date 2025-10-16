@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useVisitorCenterContext } from "../../hooks/useVisitorCenterContext";
-import type { VisitorCenter } from "../../types/VisitorCenter";
 import VisitorCenterCard from "../cards/VisitorCenterCard";
 
 interface VisitorCentersSectionProps {
@@ -8,31 +7,16 @@ interface VisitorCentersSectionProps {
 }
 
 const VisitorCentersSection = ({ parkCode }: VisitorCentersSectionProps) => {
-  const { getVisitorCentersByPark } = useVisitorCenterContext();
-  const [visitorCenters, setVisitorCenters] = useState<VisitorCenter[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const { visitorCenters, loading, error, getVisitorCentersByPark } =
+    useVisitorCenterContext();
 
   useEffect(() => {
-    const loadVisitorCenters = async () => {
-      setLoading(true);
-      try {
-        const data = await getVisitorCentersByPark(parkCode);
-        setVisitorCenters(data);
-        setError(null);
-      } catch (err: unknown) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadVisitorCenters();
+    getVisitorCentersByPark(parkCode);
   }, [parkCode, getVisitorCentersByPark]);
 
   if (loading) return <p>Loading park visitor centers...</p>;
   if (error) return <p>Error: {error}</p>;
-  if (visitorCenters.length === 0)
+  if (!visitorCenters || visitorCenters.length === 0)
     return <p>No visitor centers to show for this park.</p>;
 
   return (
@@ -46,7 +30,7 @@ const VisitorCentersSection = ({ parkCode }: VisitorCentersSectionProps) => {
       >
         <h2
           className="text-2xl md:text-4xl font-black tracking-tighter mb-6 
-      mt-6"
+        mt-6"
         >
           Visitor Centers
         </h2>

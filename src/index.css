@@ -48,3 +48,21 @@ body {
   color: var(--color-text) !important;
   text-decoration: underline;
 }
+.leaflet-control-container {
+  border: none !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border: var(--color-primary) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin-bottom: 1px;
+}
+
+.leaflet-bar a,
+.leaflet-bar {
+  border: none !important;
+}
