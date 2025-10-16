@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, type ReactNode } from "react";
+import { useState, useCallback, type ReactNode } from "react";
 import { VisitorCenterContext } from "./VisitorCenterContext";
 import {
   fetchVisitorCenters,
@@ -13,37 +13,42 @@ export const VisitorCenterProvider = ({
 }) => {
   const [visitorCenters, setVisitorCenters] = useState<VisitorCenter[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const loadVisitorCenters = async () => {
+  // All visitor centers
+  const loadVisitorCenters = useCallback(async () => {
     setLoading(true);
     try {
       const data = await fetchVisitorCenters();
       setVisitorCenters(data);
       setError(null);
-    } catch (err: unknown) {
+    } catch (err) {
+      console.error("Error fetching all visitor centers:", err);
       setError(err instanceof Error ? err.message : "Unknown error");
-      console.error(err);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
+  // Visitor centers by park
   const getVisitorCentersByPark = useCallback(
     async (parkCode: string): Promise<VisitorCenter[]> => {
+      setLoading(true);
       try {
-        return await fetchVisitorCentersByPark(parkCode);
+        const data = await fetchVisitorCentersByPark(parkCode);
+        setVisitorCenters(data);
+        setError(null);
+        return data;
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching visitor centers by park:", err);
+        setError(err instanceof Error ? err.message : "Unknown error");
         return [];
+      } finally {
+        setLoading(false);
       }
     },
     []
   );
-
-  useEffect(() => {
-    loadVisitorCenters();
-  }, []);
 
   return (
     <VisitorCenterContext.Provider
