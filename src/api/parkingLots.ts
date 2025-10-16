@@ -6,7 +6,6 @@ const apiUrl = import.meta.env.VITE_NPS_PARKING_LOTS_BASE_URL;
 // Fetch ALL parking lots
 export async function fetchParkingLots(): Promise<ParkingLot[]> {
   const url = new URL(apiUrl);
-  console.log("Parking lots base URL:", apiUrl);
   url.searchParams.set("limit", "560");
   url.searchParams.set("api_key", apiKey);
 
