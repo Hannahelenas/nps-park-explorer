@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PageHeading from "../components/common/PageHeading";
 
 import {
-  validate,
+  validateForm,
   loginSchema,
   type FormErrors,
 } from "../utils/formValidation";
@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { isValid, errors } = validate({ email, password }, loginSchema);
+    const { isValid, errors } = validateForm({ email, password }, loginSchema);
     setFormErrors(errors);
 
     if (!isValid) {
