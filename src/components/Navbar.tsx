@@ -55,17 +55,17 @@ export default function Navbar() {
           className="flex justify-end items-center gap-1 sm:gap-2 
         col-start-3 "
         >
-          {" "}
-          <button
-            type="button"
+          <Link
+            to="/login"
+            aria-label="Go to login"
             className="hidden lg:inline bg-[var(--color-bg)] border-2 
-            border-[var(--color-primary)]  px-5 py-2 rounded-full transition-all 
-            duration-300 ease-in-out hover:cursor-pointer hover:bg-transparent
-           hover:text-[var(--color-bg)] hover:border-[var(--color-bg)]
-          focus:outline-teal-600"
+            border-[var(--color-primary)] px-5 py-2 rounded-full transition-all 
+            duration-300 ease-in-out hover:bg-transparent 
+            hover:text-[var(--color-bg)] hover:border-[var(--color-bg)]
+             text-center"
           >
             Log in
-          </button>
+          </Link>
           <FavouritesNavButton />
           {/* Mobile menu button */}
           <button

@@ -9,6 +9,9 @@ import { FavouritesProvider } from "./context/favourites/FavouritesProvider";
 import Favourites from "./pages/Favourites";
 import { VisitorCenterProvider } from "./context/visitorcenters/VisitorCenterProvider";
 import { ParkingLotProvider } from "./context/parkingLots/ParkingLotProvider";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,9 @@ const router = createBrowserRouter([
       { path: "parks", element: <Parks /> },
       { path: "parks/:parkCode", element: <ParkOverview /> },
       { path: "favourites", element: <Favourites /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      { path: "user", element: <UserPage /> },
     ],
   },
 ]);
